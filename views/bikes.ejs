@@ -6,6 +6,18 @@
         <h1>BIKE RENTAL</h1>
         <%- include('./partials/nav.ejs') %>
          </div>
+                 <div class="images">
+        <% bikes.forEach(bike=>{%>
+            <div class="bike-card">
+                <img src="<%=bike.image%>" alt="<%=bike.name%>" class="bikeimg">
+                <h3><%=bike.name%></h3>
+                <p>Color:<%=bike.color%></p>
+                <p>Rs.<%=bike.pricePerDay%> / day</p>
+                <button> <a href="/booking/<%= bike._id %>">Book Now</a></button>
+            </div>
+    <%})%>
+    </div>
            <%- include('./partials/footer.ejs') %>
+            
 </body>
 </html>
