@@ -50,11 +50,16 @@ app.post('/booking',async(req,res)=>{
     }
   
 })
-
-
-app.get('/bikes', (req, res) => {
-    res.render('bikes'); 
+app.get('/bikes', async (req, res) => {
+    try{
+        const bikes = await Bike.find();
+        res.render('bikes',{bikes}); 
+    }
+    catch(err){
+        console.log(err);
+    }   
 });
+
 app.get('/location', (req, res) => {
     res.render('location'); 
 });
