@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./partials/header.ejs') %>
+<body>
+       <div class="title">
+        <h1>BIKE RENTAL</h1>
+        <%- include('./partials/nav.ejs') %>
+         </div>
+         <div id="contact-info">
+            <h2>CONTACT DETAILS</h2>
+              <form action="/booking" method="POST">
+    <input type="hidden" name="bikeId" value="<%= bike._id %>">
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required><br>
+
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" name="phone" placeholder="Your phone" required><br>
+
+    <label for="bikeName">Bike</label>
+    <input type="text" value="<%= bike.name %>" disabled><br>
+
+    <label for="fromDate">From Date</label>
+    <input type="date" id="fromDate" name="fromDate" required><br>
+
+    <label for="toDate">To Date</label>
+    <input type="date" id="toDate" name="toDate" required><br>
+
+    <label>Price Per Day</label>
+    <input type="text" value="Rs. <%= bike.pricePerDay %>" disabled><br>
+
+    <button type="submit">Book Now</button>
+</form>
+         </div>
+       
+           <%- include('./partials/footer.ejs') %>
+</body>
+</html>

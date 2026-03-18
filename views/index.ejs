@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+<body>
+    <div class="title">
+        <h1>BIKE RENTAL</h1>
+        <%- include('./partials/nav.ejs') %>
+         </div>
+          <div class="background">
+            <img src="images/background.jpg" alt="background" class="backgroundimg">
+            <img src="images/background2.jpg" alt="background" class="backgroundimg">
+        </div>
+        <div class="featured">
+             <h2>Featured Bikes</h2>
+        <div class="images">
+        <% bikes.forEach(bike=>{%>
+            <div class="bike-card">
+                <img src="<%=bike.image%>" alt="<%=bike.name%>" class="bikeimg">
+                <h3><%=bike.name%></h3>
+                <p>Color:<%=bike.color%></p>
+                <p>Rs.<%=bike.pricePerDay%> / day</p>
+                <button> <a href="/booking/<%= bike._id %>">Book Now</a></button>
+               
+            </div>
+    <%})%>
+        </div>
+          </div>
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
