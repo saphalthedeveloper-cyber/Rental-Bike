@@ -158,3 +158,47 @@ input[type="date"] {
     padding: 10px;
     cursor: pointer;
 }
+
+.container{
+    background-image: url(images/login-bg.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    position: relative;
+}
+
+.login{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+}
+.login form , input{
+    padding: 15px 80px 15px 20px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    text-align: left;
+}
+.login button{
+     padding: 15px 110px 15px 110px;
+    border-radius: 90px;
+    outline: none;
+    border: none;
+    color: black;
+    background: lightgreen;
+    font-weight: 600;
+    cursor:pointer;
+    font-size: 18px;
+}
+.login p{
+    margin-top: 10px;
+    color: black; 
+    margin-left: 10px;
+}
+.login p a{
+    color:forestgreen;
+    font-weight: 600;
+    text-decoration: none;
+}
