@@ -14,8 +14,41 @@ mongoose.connect('mongodb+srv://bikerental:bikerental1234@cluster0.qmtffg3.mongo
     app.listen(3000)}) 
 .catch((err)=>console.log(err));
 
-
-app.get('/', async (req, res) => {
+app.get('/',(req,res)=>{
+    res.render('login',{title:'login'})
+})
+app.post('/',async(req,res)=>{
+    try{
+       const user = await User.findOne({email:req.body.email}) 
+       if(!user){
+        res.send('<script>alert("Email not found, please signup first"); window.location="/"</script>')
+       }
+       else if(user.password !==req.body.password){
+        res.send('<script>alert("Wrong Password"); window.location="/"</script>')
+       }
+       else{
+        res.redirect('/home')
+       }
+    }
+      catch(err){
+        console.log(err);
+    }   
+})
+app.get('/signup',(req,res)=>{
+    res.render('signup',{title:'signup'})
+})
+app.post('/signup',async(req,res)=>{
+    try{
+          const user = new User(req.body)
+    const users =await user.save()
+    res.redirect('/')
+    }
+    catch(err){
+        console.log(err);
+    }
+   
+})
+app.get('/home', async (req, res) => {
     try{
         const bikes = await Bike.find();
         res.render('index',{bikes}); 
