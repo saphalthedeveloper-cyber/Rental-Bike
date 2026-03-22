@@ -76,7 +76,7 @@ app.post('/booking',async(req,res)=>{
     try{
           const booking=new Booking(req.body)
     const bookings = await booking.save()
-    res.redirect('/');
+    res.redirect('/home');
     }
     catch(err){
        console.log(err); 
