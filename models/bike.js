@@ -6,11 +6,7 @@ const bikeSchema= new Schema({
     color:String,
     image:String,
     contact:Number,
-    pricePerDay:Number,
-    available:{
-        type:Boolean,
-        default:true
-    },
+    pricePerDay:Number,,
    
 },{timestamps:true,collection:'bikes'});
 
