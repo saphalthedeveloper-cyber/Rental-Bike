@@ -18,7 +18,7 @@
     <input type="text" id="phone" name="phone" placeholder="Your phone" required><br>
 
     <label for="bikeName">Bike</label>
-    <input type="text" value="<%= bike.name %>" disabled><br>
+    <input type="text" value="<%= bike.name %>" name="bikeName" readonly><br>
 
     <label for="fromDate">From Date</label>
     <input type="date" id="fromDate" name="fromDate" required><br>
@@ -27,7 +27,7 @@
     <input type="date" id="toDate" name="toDate" required><br>
 
     <label>Price Per Day</label>
-    <input type="text" value="Rs. <%= bike.pricePerDay %>" disabled><br>
+    <input type="text" value="Rs. <%= bike.pricePerDay %>" name="pricePerDay" readonly><br>
 
     <button type="submit">Book Now</button>
 </form>
