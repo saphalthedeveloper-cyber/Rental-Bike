@@ -39,6 +39,10 @@ app.get('/signup',(req,res)=>{
 })
 app.post('/signup',async(req,res)=>{
     try{
+              const presentUser=await User.findOne({email:req.body.email})
+    if(presentUser){
+        return res.send('<script>alert("Email already exists! Please login"); window.location="/"</script>')
+    }
           const user = new User(req.body)
     const users =await user.save()
     res.redirect('/')
