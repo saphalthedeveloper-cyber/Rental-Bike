@@ -70,7 +70,8 @@ app.get('/booking/:id',async (req, res) => {
     try{
         const id=req.params.id;
         const bike=await Bike.findById(id);
-            res.render('booking',{bike});     
+        const booking = await Booking.findOne({ bikeId: id });
+            res.render('booking',{bike,booking});     
     }
     catch(err){
         console.log(err);
@@ -80,13 +81,18 @@ app.post('/booking',async(req,res)=>{
     try{
           const booking=new Booking(req.body)
     const bookings = await booking.save()
-    res.redirect('/home');
+    res.redirect(`/booking/${bookings.bikeId}`);
     }
     catch(err){
        console.log(err); 
     }
   
 })
+app.post('/booking/:id', async (req, res) => {
+    const id = req.params.id; 
+    await Booking.findByIdAndDelete(id);
+    res.redirect('/home');
+});
 app.get('/bikes', async (req, res) => {
     try{
         const bikes = await Bike.find();
