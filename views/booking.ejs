@@ -31,6 +31,13 @@
 
     <button type="submit">Book Now</button>
 </form>
+  <div class="cancel">
+      <% if(booking){ %>
+         <form action="/booking/<%= booking._id %>" method="post">
+            <button type="submit">Cancel Booking</button>
+        </form>
+       <% } %>
+  </div>
          </div>
        
            <%- include('./partials/footer.ejs') %>
