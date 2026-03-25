@@ -197,6 +197,11 @@ input[type="date"] {
     color: black; 
     margin-left: 10px;
 }
+.cancel{
+    position: absolute;
+    right: 10px;
+    top: -35px;
+}
 .login p a{
     color:forestgreen;
     font-weight: 600;
