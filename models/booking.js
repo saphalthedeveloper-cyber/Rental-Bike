@@ -7,6 +7,7 @@ const bookingSchema=new Schema({
     bikeName:String,
     fromDate:Date,
     toDate:Date,
+    bikeId:String,
     pricePerDay:String,
 },{timestamps:true})
 
