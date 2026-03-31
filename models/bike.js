@@ -1,14 +1,16 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-const bikeSchema= new Schema({
+const bookingSchema=new Schema({
     name:String,
-    color:String,
-    image:String,
-    contact:Number,
-    pricePerDay:Number,,
-   
-},{timestamps:true,collection:'bikes'});
+    phone:String,
+    bikeName:String,
+    fromDate:Date,
+    toDate:Date,
+    bikeId:String,
+    pricePerDay:String,
+    
+},{timestamps:true})
 
-module.exports=mongoose.model('Bike',bikeSchema);
 
+module.exports=mongoose.model('Booking',bookingSchema);
