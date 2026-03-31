@@ -9,8 +9,8 @@
          <div id="contact-info">
             <h2>CONTACT DETAILS</h2>
               <form action="/booking" method="POST">
-    <input type="hidden" name="bikeId" value="<%= bike._id %>">
-
+    <input type="hidden" name="bikeId" value="<%= bikes._id %>">
+    <input type="hidden" name="userId" value="<%= user._id %>"> 
     <label for="name">Full Name</label>
     <input type="text" id="name" name="name" placeholder="Your name" required><br>
 
@@ -18,7 +18,7 @@
     <input type="text" id="phone" name="phone" placeholder="Your phone" required><br>
 
     <label for="bikeName">Bike</label>
-    <input type="text" value="<%= bike.name %>" name="bikeName" readonly><br>
+    <input type="text" value="<%= bikes.name %>"name="bikeName" readonly><br>
 
     <label for="fromDate">From Date</label>
     <input type="date" id="fromDate" name="fromDate" required><br>
@@ -27,19 +27,23 @@
     <input type="date" id="toDate" name="toDate" required><br>
 
     <label>Price Per Day</label>
-    <input type="text" value="Rs. <%= bike.pricePerDay %>" name="pricePerDay" readonly><br>
+    <input type="text" value="Rs. <%= bikes.pricePerDay %>" name="pricePerDay" readonly><br>
 
     <button type="submit">Book Now</button>
-</form>
-  <div class="cancel">
+    
+  <!-- <div class="cancel">
       <% if(booking){ %>
          <form action="/booking/<%= booking._id %>" method="post">
-            <button type="submit">Cancel Booking</button>
-        </form>
-       <% } %>
+          <% if(booking){ %>
+    <form action="/booking/<%= booking._id %>" method="post">
+        <input type="hidden" name="userId" value="<%= user._id %>">
+        <button type="submit">Cancel Booking</button>
+    </form>
+<% } %>
+
+       <% } %> -->
   </div>
-         </div>
-       
+     
            <%- include('./partials/footer.ejs') %>
 </body>
 </html>
