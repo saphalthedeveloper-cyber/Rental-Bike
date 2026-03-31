@@ -1,8 +1,9 @@
-     <nav>
+    <nav>
             <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/bikes">Bikes</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/location">Location</a></li>
+                <li class="name">Welcome,<%=user.name%></li>
+                <li><a href="/home/<%=user._id%>">Home</a></li>
+                <li><a href="/bikes/<%=user._id%>">Bikes</a></li>
+                <li><a href="/about/<%=user._id%>">About</a></li>
+                <li><a href="/location/<%=user._id%>">Location</a></li>
             </ul>
-        </nav>
+    </nav>
