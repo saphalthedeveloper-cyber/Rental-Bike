@@ -8,7 +8,7 @@ const requireAuth=(req,res,next)=>{
         jwt.verify(token,'saphal secret',async(err,decodedToken)=>{
             if(err){
                console.log(err.message);
-               res.redirect('/home');
+               res.redirect('/');
             }
             else{
                 console.log(decodedToken);
@@ -19,7 +19,7 @@ const requireAuth=(req,res,next)=>{
         })    
     }
        else{
-            res.redirect('/home')
+            res.redirect('/')
         }
 }
 
