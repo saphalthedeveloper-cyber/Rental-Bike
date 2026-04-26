@@ -8,7 +8,6 @@
          </div>
           <div class="background">
             <img src="/images/background.png" alt="background" class="backgroundimg">
-
         <div class="featured">
              <h2>Featured Bikes</h2>
         <div class="images">
@@ -20,9 +19,7 @@
                 <p>Rs.<%=bike.pricePerDay%> / day</p>
                 <% if(user) {%>
                      <button><a href="/booking/<%= bike._id %>">Book Now</a></button>
-                 <%}%>
-               
-               
+                 <%}%>   
             </div>
     <%})%>
         </div>
