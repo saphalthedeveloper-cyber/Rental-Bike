@@ -21,7 +21,7 @@ mongoose.connect('mongodb+srv://bikerental:bikerental1234@cluster0.qmtffg3.mongo
 //  Public routes
 app.use(authRoutes);
 
-app.get('*',checkUser);
+app.use(checkUser);
  
 app.get('/home', requireAuth, async (req, res) => {
     try {
