@@ -4,7 +4,7 @@ const Bike = require('./models/bike');
 const Booking = require('./models/booking');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
-const {requireAuth} = require('./middleware/authMiddleware'); // ✅ no curly braces
+const {requireAuth,checkUser} = require('./middleware/authMiddleware'); // ✅ no curly braces
 
 const app = express();
 
@@ -18,10 +18,11 @@ mongoose.connect('mongodb+srv://bikerental:bikerental1234@cluster0.qmtffg3.mongo
     .then(() => { app.listen(3000); })
     .catch((err) => console.log(err));
 
-
 //  Public routes
 app.use(authRoutes);
 
+app.get('*',checkUser);
+ 
 app.get('/home', requireAuth, async (req, res) => {
     try {
         const bikes = await Bike.find();
@@ -80,6 +81,8 @@ app.get('/booking/:bikeId', requireAuth, async (req, res) => {
         console.log(err);
     }
 });
+
+
 
 //  404 
 app.use((req, res) => {
