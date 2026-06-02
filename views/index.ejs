@@ -19,7 +19,7 @@
                 <p>Color:<%=bike.color%></p>
                 <p>Rs.<%=bike.pricePerDay%> / day</p>
                 <% if(user) {%>
-                     <button><a href="/booking/<%= user._id %>/<%= bike._id %>">Book Now</a></button>
+                     <button><a href="/booking/<%= bike._id %>">Book Now</a></button>
                  <%}%>
                
                

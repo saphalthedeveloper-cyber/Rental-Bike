@@ -7,7 +7,8 @@ const bookingSchema=new Schema({
     bikeName:String,
     fromDate:Date,
     toDate:Date,
-    bikeId:String,
+    bikeId: { type: Schema.Types.ObjectId, ref: 'Bike' }, 
+    userId: { type: Schema.Types.ObjectId, ref: 'User' },
     pricePerDay:String,  
 },{timestamps:true})
 

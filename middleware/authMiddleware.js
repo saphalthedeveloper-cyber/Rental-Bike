@@ -1,9 +1,8 @@
-const jwt=require('jsonwebtoken')
+const jwt=require('jsonwebtoken');
 const User = require('../models/user');
 
 const requireAuth=(req,res,next)=>{
     const token=req.cookies.jwt;
-    //check json web token exits & is verified
     if(token){
         jwt.verify(token,'saphal secret',async(err,decodedToken)=>{
             if(err){
@@ -22,7 +21,25 @@ const requireAuth=(req,res,next)=>{
             res.redirect('/')
         }
 }
-//check user
+
+const requireOwner = (req, res, next) => {
+    if (req.user && req.user.role === 'owner') {
+        next();
+    } else {
+        res.status(403).render('404');
+    }
+}
+
+
+const requireRenter = (req, res, next) => {
+    if (req.user && req.user.role === 'renter') {
+        next();
+    } else {
+        res.status(403).render('404');
+    }
+}
+
+
 
 
 const checkUser = (req, res, next) => {
@@ -48,4 +65,4 @@ const checkUser = (req, res, next) => {
 };
 
 
-module.exports={requireAuth,checkUser}
+module.exports = { requireAuth, requireOwner, requireRenter };

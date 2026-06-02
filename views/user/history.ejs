@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header.ejs') %>
+<body>
+    <div class="title">
+        <h1><img class="logo" src="/images/logo.png" alt="logo"></h1>
+        <%- include('../partials/nav.ejs') %>
+    </div>
+
+    <h1 class="nobooking-title">BOOKING HISTORY</h1>
+
+<% if (bookings.length === 0) { %>
+    <div class="no-bookings">
+        <p>No bookings yet. <a href="/bikes">Book a bike!</a></p>
+    </div>
+<% } else { %>
+        <div class="images">
+            <% bookings.forEach(booking => { %>
+                <div class="bike-card">
+                    <img src="/<%=booking.bikeId.image%>" alt="<%=booking.bikeId.name%>" class="bikeimg">
+                    <h3><%=booking.bikeId.name%></h3>
+                    <p>Color: <%=booking.bikeId.color%></p>
+                    <p>Rs.<%=booking.bikeId.pricePerDay%> / day</p>
+                    <p>From: <%=booking.fromDate%></p>
+                    <p>To: <%=booking.toDate%></p>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

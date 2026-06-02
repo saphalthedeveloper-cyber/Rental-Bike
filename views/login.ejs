@@ -44,7 +44,7 @@
                         passworderror.textContent=data.errors.password;
                      }
                     if(data.user){
-                       location.assign('/home')
+                       location.assign(data.redirect)
                     }
                 }
                 catch (err) {

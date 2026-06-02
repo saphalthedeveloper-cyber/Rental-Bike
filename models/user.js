@@ -20,6 +20,11 @@ const userSchema=new Schema({
         required:true,
         minlength:[6,'Minimum password length is 6 characters']
     },
+    role: {
+    type: String,
+    enum: ['owner', 'renter'],
+    default: 'renter'
+},
 },{timestamps:true})
 
 

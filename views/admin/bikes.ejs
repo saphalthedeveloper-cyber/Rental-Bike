@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header.ejs') %>
+<body>
+    <div class="title">
+        <h1><img class="logo" src="/images/logo.png" alt="logo"></h1>
+        <%- include('../partials/nav.ejs') %>
+    </div>
+
+    <h2 class="admintitle">Manage Bikes</h2>
+
+    <div class="add-form">
+        <h3>Add New Bike</h3>
+        <form action="/admin/bikes/add" method="POST">
+            <input type="text" name="name" placeholder="Bike Name" required />
+            <input type="text" name="color" placeholder="Color" required />
+            <input type="text" name="image" placeholder="Image path (e.g. images/bike1.jpg)" required />
+            <input type="number" name="pricePerDay" placeholder="Price Per Day" required />
+            <button type="submit">Add Bike</button>
+        </form>
+    </div>
+
+
+    <div class="images">
+        <% bikes.forEach(bike => { %>
+            <div class="bike-card">
+                <img src="/<%=bike.image%>" alt="<%=bike.name%>" class="bikeimg">
+                <h3><%=bike.name%></h3>
+                <p>Color: <%=bike.color%></p>
+                <p>Rs.<%=bike.pricePerDay%> / day</p>
+
+                <h4>Update Below!!</h4>
+                <form action="/admin/bikes/edit/<%=bike._id%>" method="POST">
+                    <input type="text" name="name" value="<%=bike.name%>" required />
+                    <input type="text" name="color" value="<%=bike.color%>" required />
+                    <input type="text" name="image" value="<%=bike.image%>" required />
+                    <input type="number" name="pricePerDay" value="<%=bike.pricePerDay%>" required />
+                    <button type="submit">Update</button>
+                </form>
+
+                
+                <form action="/admin/bikes/delete/<%=bike._id%>" method="POST">
+                    <button type="submit" onclick="return confirm('Delete this bike?')">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

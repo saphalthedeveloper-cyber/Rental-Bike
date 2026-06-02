@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header.ejs') %>
+<body>
+    <div class="title">
+        <h1><img class="logo" src="/images/logo.png" alt="logo"></h1>
+        <%- include('../partials/nav.ejs') %>
+    </div>
+
+    <h2 class="admintitle">All Bookings</h2>
+
+    <% if (bookings.length === 0) { %>
+        <div class="no-bookings">
+            <p>No bookings yet.</p>
+        </div>
+    <% } else { %>
+       
+        <div class="admin-grid">
+           <% bookings.forEach(booking => { %>
+    <% if (booking.bikeId) { %>   
+        <div class="admin-card">
+            <img src="/<%=booking.bikeId.image%>" alt="<%=booking.bikeId.name%>" class="bikeimg">
+            <h3><%=booking.bikeId.name%></h3>
+            <p><strong>Customer:</strong> <%=booking.name%></p>
+            <p><strong>Phone:</strong> <%=booking.phone%></p>
+            <p><strong>Color:</strong> <%=booking.bikeId.color%></p>
+            <p><strong>Price:</strong> Rs.<%=booking.bikeId.pricePerDay%> / day</p>
+            <p><strong>From:</strong> <%=booking.fromDate ? booking.fromDate.toDateString() : 'N/A'%></p>
+            <p><strong>To:</strong> <%=booking.toDate ? booking.toDate.toDateString() : 'N/A'%></p>
+           <form action="/admin/bookings/delete/<%=booking._id%>" method="POST">
+                <button type="submit" onclick="return confirm('Delete this booking?')">Delete</button>
+            </form>
+        </div>
+    <% } %>
+<% }) %>
+</div> 
+<% } %>  
+
+<%- include('../partials/footer.ejs') %>
+</body>
+</html>
